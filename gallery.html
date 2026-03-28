@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Alya Gallery | Feminism India Placeholder</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styless.css">
+    </head>
+    <body>
+
+        <div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-modal">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title" id="disclaimerModalLabel" style="font-family: 'Playfair Display', serif; color: #0d6efd; font-weight: 600;">⚠️ Temporary Placeholder</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <p>Welcome to <strong>feminismindia.com</strong>!</p>
+                        <p>This domain is currently undergoing development for an upcoming college AI project. The full site will be launching soon.</p>
+                        <p class="mb-0" style="font-size: 0.9rem;">In the meantime, please enjoy this temporary CSS design tribute to <strong>Alya</strong>.</p>
+                    </div>
+                    <div class="modal-footer border-top-0 justify-content-center">
+                        <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal" style="border-radius: 8px;">I Understand</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <header class="bg-white text-dark text-center py-3">
+            <h1>Alya Image Gallery</h1>
+        </header>
+        
+        <nav class="bg-light p-3 text-center d-flex justify-content-center align-items-center flex-wrap">
+            <a href="index.html" class="mx-2 text-decoration-none text-dark fw-bold">Home</a>
+            <a href="index.html#about" class="mx-2 text-decoration-none text-dark fw-bold">About Alya</a>
+            <a href="gallery.html" class="mx-2 text-decoration-none text-dark fw-bold">Gallery</a>
+            
+            <a id="darkModeToggle" class="mx-2 text-decoration-none text-dark fw-bold ms-md-4" style="cursor: pointer;">
+                🌙 Dark Mode
+            </a>
+        </nav>
+
+        <hr>
+        
+        <div class="container my-5 text-center">
+            <h3 style="font-family: 'Playfair Display', serif; color: #0d6efd; margin-bottom: 30px;">📱 Phone Wallpapers</h3>
+            <div class="row g-4" id="phone-gallery-container">
+                </div>
+        </div>
+
+        <hr style="width: 50%; margin: 0 auto; border-top: 2px dashed rgba(13, 110, 253, 0.2);">
+
+        <div class="container my-5 text-center">
+            <h3 style="font-family: 'Playfair Display', serif; color: #0d6efd; margin-bottom: 30px;">💻 PC Wallpapers</h3>
+            <div class="row g-4" id="pc-gallery-container">
+                </div>
+        </div>
+
+        
+        <footer class="bg-dark text-white text-center py-3 mt-4">
+            <p id="pf" style="display: flex; justify-content: center; align-items: center; color: #fff; margin: 0;">© 2026 Tanirika Hyposelenia Pvt. Ltd. | Placeholder Site</p>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var myModal = new bootstrap.Modal(document.getElementById('disclaimerModal'));
+                myModal.show();
+
+                const toggleBtn = document.getElementById('darkModeToggle');
+                const body = document.body;
+
+                if(localStorage.getItem('theme') === 'dark') {
+                    body.classList.add('dark-mode');
+                    toggleBtn.innerHTML = '☀️ Light Mode';
+                }
+
+                toggleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    body.classList.toggle('dark-mode');
+                    if(body.classList.contains('dark-mode')) {
+                        localStorage.setItem('theme', 'dark');
+                        toggleBtn.innerHTML = '☀️ Light Mode';
+                    } else {
+                        localStorage.setItem('theme', 'light');
+                        toggleBtn.innerHTML = '🌙 Dark Mode';
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // 1. Phone Gallery Generator (51 Images)
+                const phoneContainer = document.getElementById('phone-gallery-container');
+                let phoneHTML = '';
+                for(let i = 1; i <= 51; i++) {
+                    phoneHTML += `
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="gallery-slot phone-ratio rounded shadow-sm">
+                            <img src="PhoneWallpaper/Phone_Img-${i}.jpg" alt="Alya Phone ${i}" onerror="this.style.display='none'">
+                        </div>
+                    </div>`;
+                }
+                phoneContainer.innerHTML = phoneHTML;
+
+                // 2. PC Gallery Generator (42 Images)
+                const pcContainer = document.getElementById('pc-gallery-container');
+                let pcHTML = '';
+                for(let i = 1; i <= 42; i++) {
+                    pcHTML += `
+                    <div class="col-12 col-md-6">
+                        <div class="gallery-slot pc-ratio rounded shadow-sm">
+                            <img src="PCWallpaper/PC_Img-${i}.jpg" alt="Alya PC ${i}" onerror="this.style.display='none'">
+                        </div>
+                    </div>`;
+                }
+                pcContainer.innerHTML = pcHTML;
+            });
+        </script>
+    </body>
+</html>
